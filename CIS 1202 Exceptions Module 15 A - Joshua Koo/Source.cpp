@@ -35,4 +35,16 @@ int main() {
 	catch (invalid_argument& e){
 		cerr << e.what() << endl;
 	}
+
+    try {
+        // Test cases
+        cout << "character('Z', -1): " << character('Z', -1) << endl;
+        cout << "character('?', 5): ";
+        character('?', 5);  // throw an exception
+    }
+    catch (invalid_argument& e) {
+        cerr << e.what() << endl;
+    }
+
+    return 0;
 }
