@@ -29,7 +29,8 @@ char character(char start, int offset) {
 int main() {
 	try {
 		cout << "character('a', 1): " << character('a', 1) << endl;
-		cout << "character('a', -1): " << character('a', -1);  // throw an exception
+        cout << "character('a', -1): ";
+        character('a', -1);  // throw an exception
 	}
 	catch (invalid_argument& e){
 		cerr << e.what() << endl;
