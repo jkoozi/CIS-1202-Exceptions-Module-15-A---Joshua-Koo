@@ -23,6 +23,11 @@ char character(char start, int offset) {
 
     char result = start + offset;
 
+    // Check if there's a case transition
+    if ((isupper(start) && result > 'Z') || (islower(start) && result > 'z')) {
+        throw invalid_argument("InvalidRangeException: case transition not allowed.");
+    }
+
     return result;
 }
 
@@ -43,6 +48,15 @@ int main() {
         character('?', 5);  // throw an exception
     }
     catch (invalid_argument& e) {
+        cerr << e.what() << endl;
+    }
+
+    try {
+        // Test case with case transition
+        cout << "character('A', 32): ";
+        character('A', 32);  // throw an exception
+    }
+    catch (const invalid_argument& e) {
         cerr << e.what() << endl;
     }
 
